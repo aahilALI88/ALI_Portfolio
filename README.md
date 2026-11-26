@@ -31,7 +31,7 @@ npm run build        # static site in out/
 
 ## Deploy
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the static site and publishes it to GitHub Pages.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the static site and publishes it to the `gh-pages` branch. GitHub Pages serves that branch (Settings → Pages → Deploy from a branch → `gh-pages` / root).
 
 **Custom domain:** to use a domain such as `alfredpone.com`:
 1. Buy the domain and point its DNS at GitHub Pages (see GitHub's "Managing a custom domain" docs).
