@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Theme tokens. Components only use the semantic utilities
+   (bg-ink, bg-surface, border-line, text-fg, text-muted, text-cyan,
+   text-amber …), so switching data-theme on <html> re-skins everything.
+   ------------------------------------------------------------------ */
+
+:root,
+[data-theme="dark"] {
+  /* 1. Technical Dark (default) */
+  --ink: #090d16;
+  --surface: #111827;
+  --line: #1f2937;
+  --fg: #f8fafc;
+  --muted: #94a3b8;
+  --cyan: #38bdf8;
+  --amber: #f59e0b;
+  --on-accent: #090d16;
+  --grid-line: rgb(31 41 55 / 0.45);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  /* 2. Light Minimalist */
+  --ink: #fafafa;
+  --surface: #ffffff;
+  --line: #e2e8f0;
+  --fg: #0f172a;
+  --muted: #475569;
+  --cyan: #0284c7;
+  --amber: #d97706;
+  --on-accent: #ffffff;
+  --grid-line: rgb(226 232 240 / 0.8);
+  color-scheme: light;
+}
+
+[data-theme="contrast"] {
+  /* 3. High-Contrast Editorial: monochrome accents */
+  --ink: #000000;
+  --surface: #000000;
+  --line: #ffffff;
+  --fg: #ffffff;
+  --muted: #e5e5e5;
+  --cyan: #ffffff;
+  --amber: #ffffff;
+  --on-accent: #000000;
+  --grid-line: transparent;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-cyan: var(--cyan);
+  --color-amber: var(--amber);
+  --color-on-accent: var(--on-accent);
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--cyan) 30%, transparent);
+  color: var(--fg);
+}
+
+/* Subtle engineering grid behind the hero */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%);
+}
+
+/* Soft card shadows read well on the light theme only */
+[data-theme="light"] .card-shadow {
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px rgb(15 23 42 / 0.04);
+}
+
+/* Editorial mode: no glows or gradients, bold monochrome badges */
+[data-theme="contrast"] .glow,
+[data-theme="contrast"] .bg-grid {
+  display: none;
+}
+[data-theme="contrast"] .badge {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Page entrance */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-enter 0.5s ease-out both;
+}
+
+/* Pointer-follow highlight for TiltCard */
+.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--cyan) 10%, transparent), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tilt:hover::after {
+  opacity: 1;
+}
+[data-theme="contrast"] .tilt::after {
+  display: none;
+}
+
+/* Gradient text for the company name */
+.text-brand {
+  background: linear-gradient(90deg, var(--cyan), var(--amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
