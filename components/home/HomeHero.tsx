@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, MousePointer2 } from "lucide-react";
+import { ArrowRight, Car, MousePointer2 } from "lucide-react";
 import { company, hero } from "@/data/portfolioData";
 import { HeroScene } from "@/components/three";
 import { domainStyles } from "@/components/domainStyles";
@@ -56,10 +56,16 @@ export default function HomeHero() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
+              href="/explore"
+              className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-cyan to-amber px-5 py-2.5 text-sm font-semibold text-ink shadow-lg transition hover:opacity-90"
+            >
+              <Car className="h-4 w-4" aria-hidden /> Drive the 3D world
+            </Link>
+            <Link
               href="/projects"
               className="inline-flex items-center gap-2 rounded-md bg-fg px-5 py-2.5 text-sm font-semibold text-ink transition hover:opacity-90"
             >
-              Explore Projects in 3D <ArrowRight className="h-4 w-4" aria-hidden />
+              Explore projects <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <Link
               href="/atoms-and-bits"

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Send, X } from "lucide-react";
+import { Car, Menu, Send, X } from "lucide-react";
 import { companyNavLink, navLinks, profile } from "@/data/portfolioData";
 import ThemeSwitcher from "./ThemeSwitcher";
 import AtomsBitsLogo from "./AtomsBitsLogo";
@@ -43,12 +43,12 @@ export default function Navbar() {
               <span className="text-amber">P</span>
             </span>
           </span>
-          <span className="hidden font-mono text-sm font-semibold tracking-[0.18em] text-fg min-[420px]:inline">
+          <span className="hidden whitespace-nowrap font-mono text-sm font-semibold tracking-[0.18em] text-fg min-[420px]:inline xl:hidden 2xl:inline">
             {profile.monogram}
           </span>
         </Link>
 
-        <div className="hidden items-center gap-5 xl:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <ul className="flex items-center gap-1">
             {navLinks.map((link) => {
               const active = isActive(pathname, link.href);
@@ -57,7 +57,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                    className={`whitespace-nowrap rounded-md px-2.5 py-2 text-sm transition-colors ${
                       active ? "bg-surface text-fg" : "text-muted hover:text-fg"
                     }`}
                   >
@@ -68,6 +68,13 @@ export default function Navbar() {
             })}
           </ul>
 
+          <Link
+            href="/explore"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-line px-3 py-1.5 text-sm font-semibold text-fg transition-colors hover:border-cyan/60 hover:text-cyan"
+          >
+            <Car className="h-4 w-4 text-cyan" aria-hidden /> 3D World
+          </Link>
+
           {/* Company link stands out with a gradient ring and logo mark */}
           <Link
             href={companyNavLink.href}
@@ -75,7 +82,7 @@ export default function Navbar() {
             className="group relative rounded-full bg-gradient-to-r from-cyan to-amber p-px"
           >
             <span
-              className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors ${
+              className={`flex items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors ${
                 companyActive ? "bg-transparent text-ink" : "bg-ink text-fg group-hover:bg-ink/80"
               }`}
             >
@@ -87,7 +94,7 @@ export default function Navbar() {
           <ThemeSwitcher />
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-md bg-cyan px-4 py-2 text-sm font-semibold text-ink transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-cyan px-4 py-2 text-sm font-semibold text-ink transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Contact <Send className="h-4 w-4" aria-hidden />
           </Link>
@@ -125,8 +132,14 @@ export default function Navbar() {
             ))}
           </ul>
           <Link
+            href="/explore"
+            className="mt-3 flex items-center justify-center gap-2 rounded-md border border-cyan/50 px-4 py-2.5 text-sm font-semibold text-cyan"
+          >
+            <Car className="h-4 w-4" aria-hidden /> Drive the 3D world
+          </Link>
+          <Link
             href={companyNavLink.href}
-            className="mt-3 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan to-amber px-4 py-2.5 text-sm font-semibold text-ink"
+            className="mt-2 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan to-amber px-4 py-2.5 text-sm font-semibold text-ink"
           >
             <AtomsBitsLogo className="h-4 w-4" mono /> Atoms and Bits (Pty) Ltd
           </Link>

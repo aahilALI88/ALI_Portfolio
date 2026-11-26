@@ -4,13 +4,14 @@ Multi-page portfolio for **Alfred K. Pone**: computer engineer (embedded systems
 
 **Live site:** https://aahilali88.github.io/ALI_Portfolio/
 
-Built with Next.js (App Router, static export), TypeScript, Tailwind CSS v4, Lucide React, and **Three.js** via React Three Fiber + drei for the interactive 3D scenes.
+Built with Next.js (App Router, static export), TypeScript, Tailwind CSS v4, Lucide React, and **Three.js** via React Three Fiber + drei, with **Rapier** physics for the interactive 3D scenes.
 
 ## Pages
 
 | Route | What's there |
 | --- | --- |
 | `/` | 3D "atoms + bits" hero, Atoms and Bits spotlight, about bento, interactive 3D project lab |
+| `/explore` | **Drivable 3D world**: drive the Atoms and Bits rover between zones, with Rapier physics (crates, bowling pins), painted ground titles, project pedestals and touch controls |
 | `/projects` | 3D project explorer + filterable case-study grid |
 | `/projects/[slug]` | 8 case studies, each with its own interactive 3D model |
 | `/research` | CLEWS nexus 3D model, NEUS 2022/23 data spotlight (3D bar chart), publications |
@@ -43,6 +44,8 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which builds the stati
 All text lives in `data/portfolioData.ts`: profile, projects and case studies, NEUS figures, publications, company, work profile and education.
 
 **Project images:** drop files into `public/images/projects/<slug>/` named `prototype.(jpg|png|webp)` and `architecture.(jpg|png|webp|svg)`. They replace the placeholders on the next build.
+
+**3D world** lives in `components/world/`: `World.tsx` (scene, HUD, overlays), `Rover.tsx` (arcade driving on a Rapier kinematic character controller), `Environment.tsx`, `Exhibits.tsx`, `Props.tsx`, and `worldData.ts` (zone layout). It's inspired by playful driveable portfolios such as Bruno Simon's, but written from scratch.
 
 **3D models** live in `components/three/`:
 - `AtomsBitsCore.tsx`: hero and company scene

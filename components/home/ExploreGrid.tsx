@@ -1,9 +1,17 @@
 import Link from "next/link";
-import { ArrowUpRight, Boxes, BookOpenText, Briefcase, GraduationCap, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, Boxes, BookOpenText, Briefcase, Car, GraduationCap, type LucideIcon } from "lucide-react";
 import { projects, publications } from "@/data/portfolioData";
 import { Reveal, TiltCard } from "@/components/ui";
 
 const items: { href: string; title: string; detail: string; icon: LucideIcon; accent: string; meta: string }[] = [
+  {
+    href: "/explore",
+    title: "Drive the 3D world",
+    detail: "Take the Atoms and Bits rover around a physics playground. Find every zone, stop at project pedestals and smash the bits.",
+    icon: Car,
+    accent: "text-cyan",
+    meta: "WASD · touch",
+  },
   {
     href: "/projects",
     title: "Projects",
@@ -46,7 +54,7 @@ export default function ExploreGrid() {
           <span className="text-amber">//</span> Explore
         </p>
         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">Step inside the work.</h2>
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:first-child]:row-span-2">
           {items.map((it, i) => (
             <Reveal key={it.href} delay={i * 70}>
               <TiltCard className="h-full rounded-2xl">
