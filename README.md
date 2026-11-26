@@ -34,7 +34,7 @@ npm run build        # static site in out/
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the static site and publishes it to the `gh-pages` branch. GitHub Pages serves that branch (Settings → Pages → Deploy from a branch → `gh-pages` / root).
 
-**Custom domain:** to use a domain such as `alfredpone.com`:
+**Custom domain (chosen: `alfredpone.com`):** once the domain is bought:
 1. Buy the domain and point its DNS at GitHub Pages (see GitHub's "Managing a custom domain" docs).
 2. In the repo go to Settings → Pages → Custom domain and enter it.
 3. In `deploy.yml` set `NEXT_PUBLIC_BASE_PATH: ""` and `NEXT_PUBLIC_SITE_URL: https://alfredpone.com`.
@@ -55,5 +55,4 @@ All text lives in `data/portfolioData.ts`: profile, projects and case studies, N
 
 ## Before sharing widely
 
-- Replace the LinkedIn placeholder (`profile.linkedin`).
 - NEUS figures come from the **draft** main report (May 2024). Update them if the final published report changes any numbers.

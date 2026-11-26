@@ -118,8 +118,7 @@ export const profile = {
     { display: "+267 76528781", href: "tel:+26776528781" },
     { display: "76121018", href: "tel:+26776121018" },
   ],
-  // TODO: replace with the real LinkedIn profile URL
-  linkedin: "https://www.linkedin.com/in/your-profile",
+  linkedin: "https://www.linkedin.com/in/alfred-pone-beng-mba-prince-2-practitioner-65009a61/",
   photo: {
     src: "/alfred-pone.jpg",
     alt: "Alfred K. Pone standing outside the Dr. Martin Luther King Jr. Library at night",
